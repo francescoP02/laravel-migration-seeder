@@ -21,14 +21,15 @@ class TrainsTableSeeder extends Seeder
             'FrecciaArgento',
         ];
 
+        Train::truncate();
         for ($i=0; $i < 20; $i++) { 
 
             $train = new Train();
             $train->company = $company[rand(0, count($company) - 1)];
-            $train->departure_station = $faker->city();
-            $train->arrival_station = $faker->city();
-            $train->departure_time = $faker->time();
-            $train->arrival_time = $faker->time();
+            $train->departure_station = $faker->state();
+            $train->arrival_station = $faker->state();
+            $train->departure_time = $faker->datetime();
+            $train->arrival_time = $faker->datetime();
             $train->train_number = $faker->randomDigitNotNull();
             $train->carriages = $faker->randomDigitNotNull();
             $train->is_on_time = $faker->boolean();
